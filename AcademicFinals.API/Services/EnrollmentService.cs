@@ -60,8 +60,6 @@ namespace AcademicFinals.API.Services
             if (examDate == null)
                 return null;
 
-            var potentialEnrollments = (examDate.Enrollments == null ? 0 : examDate.Enrollments.Count) + 1;
-
             var currentEnrollments = await _enrollmentRepository.Count(e => e.ExamDateId == examDateId);
 
             if (currentEnrollments >= examDate.MaxCapacity)
@@ -78,11 +76,6 @@ namespace AcademicFinals.API.Services
                 StudentId = userId,
                 ExamDateId = examDateId,
             };
-
-            if (examDate.Enrollments == null)
-                examDate.Enrollments = [];
-
-            examDate.Enrollments.Add(enrollment);
 
             await _enrollmentRepository.Create(enrollment);
             await _enrollmentRepository.Save();
