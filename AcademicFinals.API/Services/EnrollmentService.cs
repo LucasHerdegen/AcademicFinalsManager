@@ -62,8 +62,11 @@ namespace AcademicFinals.API.Services
 
             var potentialEnrollments = (examDate.Enrollments == null ? 0 : examDate.Enrollments.Count) + 1;
 
-            if (examDate.MaxCapacity < potentialEnrollments)
+            var currentEnrollments = await _enrollmentRepository.Count(e => e.ExamDateId == examDateId);
+
+            if (currentEnrollments >= examDate.MaxCapacity)
                 return null;
+
 
             var existEnrollment = await _enrollmentRepository.Exists(e => e.StudentId == userId && e.ExamDateId == examDateId);
 

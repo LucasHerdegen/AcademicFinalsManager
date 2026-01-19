@@ -49,5 +49,10 @@ namespace AcademicFinals.API.Repository
 
         public async Task<IEnumerable<T>?> Get(Expression<Func<T, bool>> predicate) =>
             await _dbSet.AsNoTracking().Where(predicate).ToListAsync();
+
+
+        public async Task<int> Count(Expression<Func<T, bool>> predicate) =>
+            await _dbSet.CountAsync(predicate);
+
     }
 }

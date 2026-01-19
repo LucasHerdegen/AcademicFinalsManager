@@ -18,5 +18,6 @@ namespace AcademicFinals.API.Repository
         Task<bool> Exists(Expression<Func<T, bool>> predicate);
         Task<T?> Find(Expression<Func<T, bool>> predicate);
         Task<IEnumerable<T>?> Get(Expression<Func<T, bool>> predicate);
+        Task<int> Count(Expression<Func<T, bool>> predicate);
     }
 }
