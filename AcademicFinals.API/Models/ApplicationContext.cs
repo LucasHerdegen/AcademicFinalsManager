@@ -15,5 +15,8 @@ namespace AcademicFinals.API.Models
 
         }
 
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<ExamDate> ExamDates { get; set; }
+        public DbSet<Enrollment> Enrollments { get; set; }
     }
 }
