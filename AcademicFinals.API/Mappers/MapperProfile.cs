@@ -19,6 +19,13 @@ namespace AcademicFinals.API.Mappers
 
             CreateMap<Subject, SubjectDto>();
             CreateMap<SubjectPostDto, Subject>();
+
+            CreateMap<ExamDate, ExamDateDto>()
+                .ForMember(x => x.EnrollmentsCount,
+                    config => config.MapFrom(y => y.Enrollments == null ? 0 : y.Enrollments.Count));
+            CreateMap<ExamDatePostDto, ExamDate>();
+            CreateMap<ExamDatePutDto, ExamDate>();
+
         }
     }
 }

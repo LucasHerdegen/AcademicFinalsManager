@@ -53,7 +53,6 @@ namespace AcademicFinals.API.Services
             await _subjectRepository.Save();
 
             var newSubject = await _subjectRepository.GetById(subject.Id);
-
             var subjectDto = _mapper.Map<SubjectDto>(newSubject);
 
             return subjectDto;

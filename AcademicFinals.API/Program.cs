@@ -28,6 +28,9 @@ builder.Services.AddScoped<IValidator<LoginDto>, LoginValidator>();
 builder.Services.AddScoped<ISubjectService, SubjectService>();
 builder.Services.AddScoped<IValidator<SubjectPostDto>, SubjectPostValidator>();
 builder.Services.AddScoped<IValidator<SubjectPutDto>, SubjectPutValidator>();
+builder.Services.AddScoped<IExamDateService, ExamDateService>();
+builder.Services.AddScoped<IValidator<ExamDatePostDto>, ExamDatePostValidator>();
+builder.Services.AddScoped<IValidator<ExamDatePutDto>, ExamDatePutValidator>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
