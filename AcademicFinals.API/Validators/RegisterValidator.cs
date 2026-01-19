@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using AcademicFinalsSpaceManager.API.DTOs;
+using AcademicFinals.API.DTOs;
 using FluentValidation;
 
-namespace AcademicFinalsSpaceManager.API.Validators
+namespace AcademicFinals.API.Validators
 {
     public class RegisterValidator : AbstractValidator<RegisterDto>
     {

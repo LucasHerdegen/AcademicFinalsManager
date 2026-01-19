@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using AcademicFinalsSpaceManager.API.Models;
+using AcademicFinals.API.Models;
 
-namespace AcademicFinalsSpaceManager.API.Repository
+namespace AcademicFinals.API.Repository
 {
     public class GenericRepository<T> : IRepository<T> where T : class
     {

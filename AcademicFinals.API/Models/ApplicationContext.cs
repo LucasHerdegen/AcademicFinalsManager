@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace AcademicFinalsSpaceManager.API.Models
+namespace AcademicFinals.API.Models
 {
     public class ApplicationContext : IdentityDbContext<ApplicationUser>
     {

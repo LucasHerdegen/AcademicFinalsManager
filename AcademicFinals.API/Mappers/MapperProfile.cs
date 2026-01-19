@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using AcademicFinalsSpaceManager.API.DTOs;
-using AcademicFinalsSpaceManager.API.Models;
+using AcademicFinals.API.DTOs;
+using AcademicFinals.API.Models;
 
-namespace AcademicFinalsSpaceManager.API.Mappers
+namespace AcademicFinals.API.Mappers
 {
     public class MapperProfile : Profile
     {

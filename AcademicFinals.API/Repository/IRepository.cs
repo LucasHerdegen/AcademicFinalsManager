@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AcademicFinalsSpaceManager.API.Models;
+using AcademicFinals.API.Models;
 
-namespace AcademicFinalsSpaceManager.API.Repository
+namespace AcademicFinals.API.Repository
 {
     public interface IRepository<T>
     {

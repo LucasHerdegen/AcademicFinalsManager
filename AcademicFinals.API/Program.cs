@@ -1,10 +1,10 @@
-using AcademicFinalsSpaceManager.API.DTOs;
-using AcademicFinalsSpaceManager.API.Extensions;
-using AcademicFinalsSpaceManager.API.Mappers;
-using AcademicFinalsSpaceManager.API.Models;
-using AcademicFinalsSpaceManager.API.Repository;
-using AcademicFinalsSpaceManager.API.Services;
-using AcademicFinalsSpaceManager.API.Validators;
+using AcademicFinals.API.DTOs;
+using AcademicFinals.API.Extensions;
+using AcademicFinals.API.Mappers;
+using AcademicFinals.API.Models;
+using AcademicFinals.API.Repository;
+using AcademicFinals.API.Services;
+using AcademicFinals.API.Validators;
 using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 

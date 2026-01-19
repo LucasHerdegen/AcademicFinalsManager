@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace AcademicFinalsSpaceManager.API.Models
+namespace AcademicFinals.API.Models
 {
     public class ApplicationUser : IdentityUser
     {

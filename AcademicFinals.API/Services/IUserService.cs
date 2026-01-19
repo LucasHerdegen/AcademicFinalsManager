@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AcademicFinalsSpaceManager.API.DTOs;
+using AcademicFinals.API.DTOs;
 
-namespace AcademicFinalsSpaceManager.API.Services
+namespace AcademicFinals.API.Services
 {
     public interface IUserService
     {

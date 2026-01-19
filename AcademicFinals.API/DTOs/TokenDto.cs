@@ -4,7 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AcademicFinalsSpaceManager.API.DTOs
+namespace AcademicFinals.API.DTOs
 {
     public class TokenDto
     {

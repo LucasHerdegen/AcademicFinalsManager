@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AcademicFinalsSpaceManager.API.DTOs
+namespace AcademicFinals.API.DTOs
 {
     public class RegisterDto
     {

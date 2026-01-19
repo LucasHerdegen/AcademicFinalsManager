@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AcademicFinalsSpaceManager.API.DTOs;
+using AcademicFinals.API.DTOs;
 using FluentValidation;
 
-namespace AcademicFinalsSpaceManager.API.Validators
+namespace AcademicFinals.API.Validators
 {
     public class LoginValidator : AbstractValidator<LoginDto>
     {

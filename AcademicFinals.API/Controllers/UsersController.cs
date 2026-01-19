@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AcademicFinalsSpaceManager.API.DTOs;
-using AcademicFinalsSpaceManager.API.Services;
+using AcademicFinals.API.DTOs;
+using AcademicFinals.API.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AcademicFinalsSpaceManager.API.Controllers
+namespace AcademicFinals.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using AcademicFinalsSpaceManager.API.DTOs;
-using AcademicFinalsSpaceManager.API.Models;
+using AcademicFinals.API.DTOs;
+using AcademicFinals.API.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace AcademicFinalsSpaceManager.API.Services
+namespace AcademicFinals.API.Services
 {
     public class UserService : IUserService
     {

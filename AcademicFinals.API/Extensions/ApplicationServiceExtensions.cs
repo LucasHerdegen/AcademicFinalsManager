@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AcademicFinalsSpaceManager.API.Models;
+using AcademicFinals.API.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
-namespace AcademicFinalsSpaceManager.API.Extensions
+namespace AcademicFinals.API.Extensions
 {
     public static class ApplicationServiceExtensions
     {
