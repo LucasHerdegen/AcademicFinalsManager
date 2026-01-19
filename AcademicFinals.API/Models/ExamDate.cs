@@ -12,6 +12,6 @@ namespace AcademicFinals.API.Models
         public int MaxCapacity { get; set; }
         public int SubjectId { get; set; }
         public Subject? Subject { get; set; }
-        public IEnumerable<Enrollment>? Enrollments { get; set; }
+        public ICollection<Enrollment>? Enrollments { get; set; }
     }
 }

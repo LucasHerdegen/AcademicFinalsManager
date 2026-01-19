@@ -25,6 +25,10 @@ builder.Services.AddAutoMapper(typeof(MapperProfile));
 builder.Services.AddScoped<IValidator<RegisterDto>, RegisterValidator>();
 builder.Services.AddScoped<IValidator<LoginDto>, LoginValidator>();
 
+builder.Services.AddScoped<ISubjectService, SubjectService>();
+builder.Services.AddScoped<IValidator<SubjectPostDto>, SubjectPostValidator>();
+builder.Services.AddScoped<IValidator<SubjectPutDto>, SubjectPutValidator>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
 

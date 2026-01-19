@@ -16,6 +16,9 @@ namespace AcademicFinals.API.Mappers
                 .ForMember(user => user.UserName, config => config.MapFrom(dto => dto.Email));
 
             CreateMap<ApplicationUser, UserDto>();
+
+            CreateMap<Subject, SubjectDto>();
+            CreateMap<SubjectPostDto, Subject>();
         }
     }
 }
