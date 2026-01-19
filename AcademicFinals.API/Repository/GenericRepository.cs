@@ -47,5 +47,7 @@ namespace AcademicFinals.API.Repository
             await _dbSet.FirstOrDefaultAsync(predicate);
 
 
+        public async Task<IEnumerable<T>?> Get(Expression<Func<T, bool>> predicate) =>
+            await _dbSet.AsNoTracking().Where(predicate).ToListAsync();
     }
 }

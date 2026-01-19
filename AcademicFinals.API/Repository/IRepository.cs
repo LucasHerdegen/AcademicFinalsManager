@@ -16,7 +16,7 @@ namespace AcademicFinals.API.Repository
         void Delete(T delete);
         Task Save();
         Task<bool> Exists(Expression<Func<T, bool>> predicate);
-
         Task<T?> Find(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>?> Get(Expression<Func<T, bool>> predicate);
     }
 }

@@ -53,7 +53,7 @@ namespace AcademicFinals.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateSubject(SubjectPostDto subjectPostDto)
         {
-            var validation = _subjectPostValidator.Validate(subjectPostDto);
+            var validation = await _subjectPostValidator.ValidateAsync(subjectPostDto);
 
             if (!validation.IsValid)
                 return BadRequest(validation.Errors);
@@ -70,7 +70,7 @@ namespace AcademicFinals.API.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateSubject(SubjectPutDto subjectPutDto)
         {
-            var validation = _subjectPutValidator.Validate(subjectPutDto);
+            var validation = await _subjectPutValidator.ValidateAsync(subjectPutDto);
 
             if (!validation.IsValid)
                 return BadRequest(validation.Errors);

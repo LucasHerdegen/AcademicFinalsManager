@@ -26,6 +26,7 @@ namespace AcademicFinals.API.Mappers
             CreateMap<ExamDatePostDto, ExamDate>();
             CreateMap<ExamDatePutDto, ExamDate>();
 
+            CreateMap<Enrollment, EnrollmentDto>();
         }
     }
 }
