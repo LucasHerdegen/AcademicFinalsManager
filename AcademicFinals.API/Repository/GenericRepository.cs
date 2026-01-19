@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using AcademicFinals.API.Models;
+using System.Linq.Expressions;
 
 namespace AcademicFinals.API.Repository
 {
@@ -36,6 +37,15 @@ namespace AcademicFinals.API.Repository
 
         public async Task Save() =>
             await _context.SaveChangesAsync();
+
+
+        public async Task<bool> Exists(Expression<Func<T, bool>> predicate) =>
+            await _dbSet.AnyAsync(predicate);
+
+
+        public async Task<T?> Find(Expression<Func<T, bool>> predicate) =>
+            await _dbSet.FirstOrDefaultAsync(predicate);
+
 
     }
 }

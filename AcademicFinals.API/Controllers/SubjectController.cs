@@ -44,7 +44,7 @@ namespace AcademicFinals.API.Controllers
             var subject = await _subjectService.GetSubject(id);
 
             if (subject == null)
-                return NotFound(2);
+                return NotFound();
 
             return Ok(subject);
         }
@@ -59,6 +59,9 @@ namespace AcademicFinals.API.Controllers
                 return BadRequest(validation.Errors);
 
             var subject = await _subjectService.CreateSubject(subjectPostDto);
+
+            if (subject == null)
+                return Conflict("The subject already exist");
 
             return CreatedAtAction(nameof(GetSubject), new { Id = subject.Id }, subject);
         }

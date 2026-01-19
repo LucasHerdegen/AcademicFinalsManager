@@ -10,7 +10,7 @@ namespace AcademicFinals.API.Services
     {
         public Task<IEnumerable<SubjectDto>?> GetSubjects();
         public Task<SubjectDto?> GetSubject(int id);
-        public Task<SubjectDto> CreateSubject(SubjectPostDto dto);
+        public Task<SubjectDto?> CreateSubject(SubjectPostDto dto);
         public Task<bool> UpdateSubject(SubjectPutDto dto);
         public Task<bool> DeleteSubject(int id);
     }

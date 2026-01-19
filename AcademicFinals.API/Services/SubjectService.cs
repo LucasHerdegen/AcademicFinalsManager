@@ -40,8 +40,13 @@ namespace AcademicFinals.API.Services
             return subjectDto;
         }
 
-        public async Task<SubjectDto> CreateSubject(SubjectPostDto dto)
+        public async Task<SubjectDto?> CreateSubject(SubjectPostDto dto)
         {
+            var exist = await _subjectRepository.Exists(s => s.Name.ToUpper() == dto.Name!.ToUpper());
+
+            if (exist)
+                return null;
+
             var subject = _mapper.Map<Subject>(dto);
 
             await _subjectRepository.Create(subject);
