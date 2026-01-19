@@ -12,12 +12,15 @@ namespace AcademicFinals.API.Services
     public class EnrollmentService : IEnrollmentService
     {
         private readonly IRepository<Enrollment> _enrollmentRepository;
+        private readonly IRepository<ExamDate> _examDatesRepository;
         private readonly IMapper _mapper;
 
         public EnrollmentService(IRepository<Enrollment> enrollmentRepository,
+            IRepository<ExamDate> examDatesRepository,
             IMapper mapper)
         {
             _enrollmentRepository = enrollmentRepository;
+            _examDatesRepository = examDatesRepository;
             _mapper = mapper;
         }
 
@@ -52,9 +55,19 @@ namespace AcademicFinals.API.Services
 
         public async Task<EnrollmentDto?> CreateEnrollment(string userId, int examDateId)
         {
-            var exist = await _enrollmentRepository.Exists(e => e.StudentId == userId && e.ExamDateId == examDateId);
+            var examDate = await _examDatesRepository.GetById(examDateId);
 
-            if (exist)
+            if (examDate == null)
+                return null;
+
+            var potentialEnrollments = (examDate.Enrollments == null ? 0 : examDate.Enrollments.Count) + 1;
+
+            if (examDate.MaxCapacity < potentialEnrollments)
+                return null;
+
+            var existEnrollment = await _enrollmentRepository.Exists(e => e.StudentId == userId && e.ExamDateId == examDateId);
+
+            if (existEnrollment)
                 return null;
 
             var enrollment = new Enrollment
@@ -62,6 +75,11 @@ namespace AcademicFinals.API.Services
                 StudentId = userId,
                 ExamDateId = examDateId,
             };
+
+            if (examDate.Enrollments == null)
+                examDate.Enrollments = [];
+
+            examDate.Enrollments.Add(enrollment);
 
             await _enrollmentRepository.Create(enrollment);
             await _enrollmentRepository.Save();
