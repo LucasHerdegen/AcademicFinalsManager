@@ -1,8 +1,10 @@
+import { Register } from "./Register"
+
 function App() {
 
   return (
     <>
-      <h1>Hello world!</h1>
+      <Register />
     </>
   )
 }
