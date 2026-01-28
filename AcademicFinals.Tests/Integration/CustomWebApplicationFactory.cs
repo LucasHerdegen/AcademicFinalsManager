@@ -1,3 +1,5 @@
+using System.Linq;
+using Microsoft.AspNetCore.Authentication;
 using AcademicFinals.API.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -18,6 +20,16 @@ namespace AcademicFinals.Tests.Integration
                 if (descriptor != null)
                     services.Remove(descriptor);
 
+
+                var dbConfigDescriptor = services.SingleOrDefault(d =>
+                     d.ServiceType.Name == "IDbContextOptionsConfiguration`1" &&
+                     d.ServiceType.GenericTypeArguments.Contains(typeof(ApplicationContext)));
+
+                if (dbConfigDescriptor != null)
+                {
+                    services.Remove(dbConfigDescriptor);
+                }
+
                 services.AddDbContext<ApplicationContext>(options =>
                 {
                     options.UseInMemoryDatabase("InMemoryDbForTesting");
@@ -30,15 +42,19 @@ namespace AcademicFinals.Tests.Integration
                     var scopedServices = scope.ServiceProvider;
                     var db = scopedServices.GetRequiredService<ApplicationContext>();
 
+                    db.Database.EnsureDeleted();
                     db.Database.EnsureCreated();
-
-                    // DATOS INICIALES
-                    // db.Subjects.Add(new Subject { Name = "Matemáticas" });
-                    // db.Subjects.Add(new Subject { Name = "Informática" });
-                    // db.Subjects.Add(new Subject { Name = "Física" });
-                    // db.SaveChanges();
                 }
+
+                services.AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = "Test";
+                    options.DefaultChallengeScheme = "Test";
+                })
+                .AddScheme<AuthenticationSchemeOptions, TestAuthHandler>("Test", options => { });
             });
+
+
         }
     }
 }
