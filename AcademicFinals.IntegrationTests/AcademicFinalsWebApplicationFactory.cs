@@ -12,6 +12,8 @@ namespace AcademicFinals.IntegrationTests
 {
     public class AcademicFinalsWebApplicationFactory : WebApplicationFactory<Program>
     {
+        private readonly string _dbName = Guid.NewGuid().ToString();
+
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             builder.ConfigureServices(services =>
@@ -25,7 +27,7 @@ namespace AcademicFinals.IntegrationTests
                 services.AddScoped<DbContextOptions<ApplicationContext>>(sp =>
                 {
                     return new DbContextOptionsBuilder<ApplicationContext>()
-                        .UseInMemoryDatabase("TestingDB")
+                        .UseInMemoryDatabase(_dbName)
                         .UseApplicationServiceProvider(sp)
                         .Options;
                 });
