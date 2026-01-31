@@ -38,5 +38,18 @@ namespace AcademicFinals.IntegrationTests
                 .AddScheme<AuthenticationSchemeOptions, TestAuthHandler>("TestScheme", options => { });
             });
         }
+
+        // helper to ensure tests run against a clean in-memory database
+        public async Task EnsureCleanDatabaseAsync()
+        {
+            using var scope = Services.CreateScope();
+            var context = scope.ServiceProvider.GetService<ApplicationContext>();
+
+            if (context == null)
+                throw new Exception("Something went wrong finding the context...");
+
+            await context.Database.EnsureDeletedAsync();
+            await context.Database.EnsureCreatedAsync();
+        }
     }
 }
