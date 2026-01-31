@@ -1,10 +1,10 @@
 using AcademicFinals.API.Models;
+using AcademicFinals.IntegrationTests.Helpers;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using AcademicFinals.IntegrationTests.Helpers;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Data.Common;
 
@@ -16,13 +16,18 @@ namespace AcademicFinals.IntegrationTests
         {
             builder.ConfigureServices(services =>
             {
+                // Remove SQL Server configuration
                 services.RemoveAll(typeof(DbContextOptions<ApplicationContext>));
                 services.RemoveAll(typeof(DbContextOptions));
                 services.RemoveAll(typeof(DbConnection));
 
-                services.AddDbContext<ApplicationContext>(options =>
+                // Override DB options
+                services.AddScoped<DbContextOptions<ApplicationContext>>(sp =>
                 {
-                    options.UseInMemoryDatabase("TestingDB");
+                    return new DbContextOptionsBuilder<ApplicationContext>()
+                        .UseInMemoryDatabase("TestingDB")
+                        .UseApplicationServiceProvider(sp)
+                        .Options;
                 });
 
                 services.AddAuthentication(options =>
