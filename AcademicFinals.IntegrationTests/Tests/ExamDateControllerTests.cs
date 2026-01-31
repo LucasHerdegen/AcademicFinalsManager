@@ -60,14 +60,7 @@ namespace AcademicFinals.IntegrationTests.Tests
             var client = CreateAuthenticatedClient();
 
             string subjectName = "Matematicas";
-            var subjectPostDto = new SubjectPostDto
-            {
-                Name = subjectName
-            };
-
-            var postResponse = await client.PostAsync("/api/subject", JsonContent.Create(subjectPostDto));
-            var result = await postResponse.Content.ReadFromJsonAsync<SubjectDto>();
-            var subjectId = result!.Id;
+            int subjectId = 1;
 
             int examId = -1;
 
@@ -77,6 +70,15 @@ namespace AcademicFinals.IntegrationTests.Tests
 
                 if (context == null)
                     throw new Exception("Something went wrong finding the context...");
+
+                var subject = new Subject
+                {
+                    Name = subjectName,
+                    Id = subjectId
+                };
+
+                await context.Subjects.AddAsync(subject);
+                await context.SaveChangesAsync();
 
                 var examDate = new ExamDate
                 {
@@ -129,17 +131,10 @@ namespace AcademicFinals.IntegrationTests.Tests
             var client = CreateAuthenticatedClient();
 
             string subjectName = "Matematicas";
-            var subjectPostDto = new SubjectPostDto
-            {
-                Name = subjectName
-            };
+            int subjectId = 1;
 
             var examDateUtc = DateTime.Now.AddDays(5);
             int maxCapaxity = 20;
-
-            var postResponse = await client.PostAsync("/api/subject", JsonContent.Create(subjectPostDto));
-            var result = await postResponse.Content.ReadFromJsonAsync<SubjectDto>();
-            var subjectId = result!.Id;
 
             int examId = -1;
 
@@ -149,6 +144,15 @@ namespace AcademicFinals.IntegrationTests.Tests
 
                 if (context == null)
                     throw new Exception("Something went wrong finding the context...");
+
+                var subject = new Subject
+                {
+                    Name = subjectName,
+                    Id = subjectId
+                };
+
+                await context.Subjects.AddAsync(subject);
+                await context.SaveChangesAsync();
 
                 var examDate = new ExamDate
                 {
@@ -185,17 +189,27 @@ namespace AcademicFinals.IntegrationTests.Tests
             var client = CreateAuthenticatedClient();
 
             string subjectName = "Matematicas";
-            var subjectPostDto = new SubjectPostDto
-            {
-                Name = subjectName
-            };
+            int subjectId = 1;
 
             var examDateUtc = DateTime.Now.AddDays(5);
             int maxCapaxity = 20;
 
-            var postResponse = await client.PostAsync("/api/subject", JsonContent.Create(subjectPostDto));
-            var result = await postResponse.Content.ReadFromJsonAsync<SubjectDto>();
-            var subjectId = result!.Id;
+            using (var scope = _factory.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetService<ApplicationContext>();
+
+                if (context == null)
+                    throw new Exception("Something went wrong finding the context...");
+
+                var subject = new Subject
+                {
+                    Name = subjectName,
+                    Id = subjectId
+                };
+
+                await context.Subjects.AddAsync(subject);
+                await context.SaveChangesAsync();
+            }
 
             var examDatePostDto = new ExamDatePostDto
             {
