@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademicFinalsSpaceManager.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademicFinals.Tests", "AcademicFinals.Tests\AcademicFinals.Tests.csproj", "{B9E6D3AE-50F8-4B28-BFD6-5C4A7A9ED163}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademicFinals.IntegrationTests", "AcademicFinals.IntegrationTests\AcademicFinals.IntegrationTests.csproj", "{FED97C02-B060-4EB4-A8C9-AFBC39326E64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{B9E6D3AE-50F8-4B28-BFD6-5C4A7A9ED163}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9E6D3AE-50F8-4B28-BFD6-5C4A7A9ED163}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9E6D3AE-50F8-4B28-BFD6-5C4A7A9ED163}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FED97C02-B060-4EB4-A8C9-AFBC39326E64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FED97C02-B060-4EB4-A8C9-AFBC39326E64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FED97C02-B060-4EB4-A8C9-AFBC39326E64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FED97C02-B060-4EB4-A8C9-AFBC39326E64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
